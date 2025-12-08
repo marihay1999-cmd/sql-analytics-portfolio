@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS employees (
+CREATE TABLE employees (
   employee_id SERIAL PRIMARY KEY,
   first_name TEXT,
   last_name TEXT,
@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS employees (
   salary NUMERIC
 );
 
-CREATE TABLE IF NOT EXISTS customers (
+CREATE TABLE customers (
   customer_id INTEGER PRIMARY KEY,
   customer_name TEXT,
   address TEXT,
@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS customers (
   zip_code TEXT
 );
 
-CREATE TABLE IF NOT EXISTS products (
+CREATE TABLE products (
   product_id INTEGER PRIMARY KEY,
   product_name TEXT,
   price NUMERIC,
@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS products (
   category TEXT
 );
 
-CREATE TABLE IF NOT EXISTS orders (
+CREATE TABLE orders (
   order_id INTEGER PRIMARY KEY,
   order_date TIMESTAMP,
   year INT,
@@ -30,21 +30,13 @@ CREATE TABLE IF NOT EXISTS orders (
   month TEXT
 );
 
-CREATE TABLE IF NOT EXISTS sales (
+CREATE TABLE sales (
   transaction_id INTEGER PRIMARY KEY,
-  order_id INTEGER REFERENCES orders(order_id) ON DELETE RESTRICT,
-  product_id INTEGER REFERENCES products(product_id) ON DELETE RESTRICT,
-  customer_id INTEGER REFERENCES customers(customer_id) ON DELETE RESTRICT,
-  employee_id INTEGER REFERENCES employees(employee_id) ON DELETE SET NULL,
+  order_id INTEGER REFERENCES orders(order_id),
+  product_id INTEGER REFERENCES products(product_id),
+  customer_id INTEGER REFERENCES customers(customer_id),
+  employee_id INTEGER REFERENCES employees(employee_id),
   total_sales NUMERIC,
   quantity INTEGER,
   discount NUMERIC
-);
-
-CREATE TABLE IF NOT EXISTS employees (
-  employee_id SERIAL PRIMARY KEY,
-  first_name TEXT,
-  last_name TEXT,
-  email TEXT,
-  salary NUMERIC
 );
