@@ -15,5 +15,5 @@ FROM '/docker-entrypoint-initdb.d/data/orders.csv'
 WITH (FORMAT csv, HEADER true);
 
 COPY sales(transaction_id,order_id,product_id,customer_id,employee_id,total_sales,quantity,discount)
-FROM '/docker-entrypoint-init.d/data/sales.csv'
+FROM '/docker-entrypoint-initdb.d/data/sales.csv'
 WITH (FORMAT csv, HEADER true);
