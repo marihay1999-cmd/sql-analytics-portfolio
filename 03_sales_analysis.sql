@@ -1,8 +1,10 @@
+
 CREATE TABLE IF NOT EXISTS sales_analysis AS
 SELECT
     s.transaction_id,
 
     o.order_date,
+    DATE(o.order_date) AS order_date_date,
     o.year,
     o.quarter,
     o.month,

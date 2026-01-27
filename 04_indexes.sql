@@ -1,3 +1,4 @@
+
 CREATE INDEX idx_sales_analysis_order_date
     ON sales_analysis(order_date_date);
 
